@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if title %}HMS :: {{ title|upper }}{% else %}Hotel MS{% endif %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+{% block before_container %}
+    <div class="jumbotron bg-danger text-center text-white font-weight-bold">
+        <h1>Welcome to Hotel Management System</h1>
+    </div>
+{% endblock %}
+<div class="container" style="min-height: 70vh">
+    {% block container %}
+
+    {% endblock %}
+</div>
+<div class="footer p-2 bg-danger text-white font-weight-bold d-flex justify-content-center align-items-center">
+    <p>Hotel Management System ç 2022</p>
+</div>
+</body>
+</html>
