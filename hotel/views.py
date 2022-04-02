@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 from django.views import generic
 
 from .forms import FormAvailability
 from .models import Booking, Room
+from .booking_functions.availability import check_availability
 
 
 class RoomList(generic.ListView):
@@ -25,5 +26,16 @@ class BookingForm(generic.FormView):
 
     def form_valid(self, form):
         data = form.cleaned_data
-        room_list = Room.objects.filter(category=data['room_category'])
-        print(room_list)
+        check_in = data['check_in']
+        category = data['room_category']
+        room_list = Room.objects.filter(category=category)
+        rooms = [room for room in room_list if check_availability(room, check_in)]
+        if rooms:
+            room = rooms[0]
+            booking = Booking.objects.create(
+                user=self.request.user, room=room, check_in=check_in, check_out=data['check_out']
+            )
+            booking.save()
+            return HttpResponse("Room has been booked")
+        else: return HttpResponse("Please try another Category")
+
