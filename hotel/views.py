@@ -36,6 +36,6 @@ class BookingForm(generic.FormView):
                 user=self.request.user, room=room, check_in=check_in, check_out=data['check_out']
             )
             booking.save()
-            return HttpResponse("Room has been booked")
+            return HttpResponse(booking)
         else: return HttpResponse("Please try another Category")
 
