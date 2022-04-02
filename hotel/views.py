@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views import generic
 
+from .forms import FormAvailability
 from .models import Booking, Room
 
 
@@ -16,3 +17,13 @@ class RoomList(generic.ListView):
 
 class BookingList(generic.ListView):
     model = Booking
+
+
+class BookingForm(generic.FormView):
+    form_class = FormAvailability
+    template_name = 'hotel/booking_form.html'
+
+    def form_valid(self, form):
+        data = form.cleaned_data
+        room_list = Room.objects.filter(category=data['room_category'])
+        print(room_list)
