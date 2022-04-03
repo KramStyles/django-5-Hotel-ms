@@ -34,6 +34,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             msg = 'User created'
+            return redirect('acc-login')
         else:
             msg = 'form is not valid'
     else:
