@@ -1,9 +1,16 @@
 {% extends 'hotel/base.html' %}
+{% load crispy_forms_tags %}
 {% block container %}
     <h1 class="text-center">Register page</h1>
     <form class="w-50 m-auto" method="post">
         {% csrf_token %}
-        {{ form }}
+        <div class="row">
+            <div class="col-12">
+                <label for=""></label>
+                {{ form.username }}
+            </div>
+        </div>
+        {{ form|crispy }}
 
         {% if msg %} <div class="alert alert-danger mt-3">{{ msg }}</div> {% endif %}
         <button type="submit" class="btn btn-danger btn-block mt-3">Register</button>
