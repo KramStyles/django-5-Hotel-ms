@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <title>{% if title %}HMS :: {{ title|upper }}{% else %}Hotel MS{% endif %}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'account/checkbox.css' %}">
+
 </head>
 <body>
 {% block before_container %}
     <div class="jumbotron bg-danger text-center text-white font-weight-bold">
-        <h1>Welcome to Hotel Management System</h1>
+        <h1>Welcome to Hotel Management System </h1>
     </div>
 {% endblock %}
 <div class="container" style="min-height: 70vh">
