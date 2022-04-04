@@ -1,0 +1,49 @@
+{% extends 'hotel/base.html' %}
+
+{% block container %}
+
+    <h1 class="text-center">Register page</h1>
+    <form class="w-50 m-auto" method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-12">
+                <label for=""></label>
+                {{ form.username }}
+            </div>
+        </div>
+        <div class="row mt-4 mb-4">
+            <div class="col-md-6">
+                <label for="{{ form.password1.id_for_label }}">Secured Password</label>
+                {{ form.password1 }}
+            </div>
+            <div class="col-md-6">
+                <label for="{{ form.password2.id_for_label }}">Confirmation of password</label>
+                {{ form.password2 }}
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-12">
+                <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+                {{ form.email }}
+            </div>
+        </div>
+
+        <label class="control control--checkbox">Admin
+            {{ form.is_admin }}
+            <div class="control__indicator"></div>
+        </label>
+        <label class="control control--checkbox">Manager
+            {{ form.is_manager }}
+            <div class="control__indicator"></div>
+        </label>
+        <label class="control control--checkbox">Staff
+            {{ form.is_staff }}
+            <div class="control__indicator"></div>
+        </label>
+
+        {% if msg %}
+            <div class="alert alert-danger mt-3">{{ msg }}</div> {% endif %}
+        <button type="submit" class="btn btn-danger btn-block mt-3">Register</button>
+
+    </form>
+{% endblock %}

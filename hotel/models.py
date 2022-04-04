@@ -1,6 +1,7 @@
+import django.utils.timezone
 from django.db import models
 from django.contrib.auth.models import User
-from django.utils import timezone
+from django.conf import settings
 
 
 class Room(models.Model):
@@ -28,9 +29,10 @@ class Room(models.Model):
 
 
 class Booking(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
-    check_in = models.DateTimeField(default=timezone.now())
+    check_in = models.DateTimeField(django.utils.timezone.now())
     check_out = models.DateTimeField()
 
     def __str__(self):

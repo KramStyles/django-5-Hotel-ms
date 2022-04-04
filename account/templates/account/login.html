@@ -1,0 +1,12 @@
+{% extends 'hotel/base.html' %}
+{% block container %}
+    <h1 class="text-center">Hello and oog login</h1>
+    <form class="w-50 m-auto" method="post">
+        {% csrf_token %}
+        {{ form }}
+
+        {% if msg %} <div class="alert alert-danger mt-3">{{ msg }}</div> {% endif %}
+        <button type="submit" class="btn btn-danger btn-block mt-3">Login</button>
+
+    </form>
+{% endblock %}

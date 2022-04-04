@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'hotel',
     'hotel.booking_functions',
-    'crispy_forms'
+    'crispy_forms',
+    'account',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +126,5 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+AUTH_USER_MODEL = 'account.User'
